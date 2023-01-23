@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link rel="stylesheet" href="style.css">
+      <style>
+            form {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+            }
+            span{
+                  color: red;
+            }
+      </style>
+</head>
+<body>
+   
+      {% comment %}
+        
+<form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <!-- <input type="file" name="myfile" required /> -->
+      <!-- <input type="file"  accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf" />
+       -->
+       <!-- <input type="file" id="docpicker" name="myfile"
+       accept=".doc,.docx,.txt,.pdf" /> -->
+  
+       
+  
+       <input  type="submit" name="submit" value="Upload" />
+  
+  </form>
+  {% endcomment %}
+
+      <div>
+            <input type="file" id="docpicker" name="myfile" required/>
+             <span></span>
+       </div>
+
+       
+
+       <script>
+      let input = document.querySelector('input');
+      let span = document.querySelector('span');
+
+      input.addEventListener('change' , () =>{
+            let files = input.files
+
+            if(files.length > 0 ){
+                  if (files[0].size > 10 * 1024){
+                        span.innerText = 'File Size Exceeds 10kb';
+                        return;
+
+                  }
+            }
+            span.innerText = '';
+      })
+
+</script>
+
+      
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

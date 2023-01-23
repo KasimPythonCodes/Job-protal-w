@@ -1,0 +1,345 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Resume  {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="container-fluid py-4">
+    
+    <div class="row">
+      <div class="col-12">
+      {% include 'home/messages.html' %}
+  
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <h6>Views All Resume 
+              
+              <form style="float:right;" action="{% url 'search' %}" method="get">
+                <div class="ms-md-auto ps-md-3 d-flex align-items-center">
+                <!-- <div class="bg-white border-radius-lg d-flex"> -->
+                  <input required type="search" name="query" id="search" class="form-control border-0 ps-3" placeholder="Type here...">
+                 
+                  <button class="btn bg-gradient-primary my-1 me-1">Search</button>
+                <!-- </div> -->
+              </div>
+      
+            </form>
+            </h6>
+          </div>
+         
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+              {% if show %}
+                
+                <thead>
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-light bg-dark  ">Sno.ID</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-light bg-dark  ps-2">Job Profile</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-light bg-dark  ps-2">First Name</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-light bg-dark  ps-2">Last Name</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-light bg-dark  ps-2">Email</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-light bg-dark  ps-2">Phone Number</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-light bg-dark  ps-2">Remote Type </th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-light bg-dark  ps-2">Work Experiance</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-light bg-dark  ps-2">Job Type</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-light bg-dark  ps-2">Zipcode</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-light bg-dark  ps-2">Date</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-light bg-dark  ps-2">Action</th>
+                    <th class="text-secondary opacity-7  text-light bg-dark "></th>
+                  </tr>
+                </thead>
+                
+              {% for resume in show  %}
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                       &nbsp; &nbsp; <div>
+                          <!-- <img src="/static/assets/img/team-2.jpg" class="avatar avatar-sm me-3"> -->
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{resume.id|truncatewords:4}}</h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{resume.job_profile}}</h6>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{resume.first_name}}</h6>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{resume.last_name}}</h6>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{resume.email}}</h6>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{resume.phone_number}}</h6>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{resume.remote_type}}</h6>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{resume.work_expriance}}</h6>
+                        </div>
+                      </div>
+                    </td>
+                    
+                    <td>
+                      <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{resume.job_type}}</h6>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{resume.zipcode}}</h6>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="d-flex px-1 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">{{resume.updated_at}}</h6>
+                        </div>
+                      </div>
+                    </td>
+
+
+                    <td>
+                      <a href="{{resume.doc.url}}" target="_blank" ><button   type="button" class="btn-group btn-group-sm-1 px-3 btn-secondary text-light me-2">Download</button></a>
+                    </td>
+
+                    <td>
+                    <a href="/resume-resume-view-delete/{{resume.id}}"><button type="button" class="btn-group btn-group-sm-1 px-3 btn-warning text-light">Delete</button></a>
+                    </td>
+
+
+
+
+                  {% comment %}
+                    
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="/static/assets/img/team-3.jpg" class="avatar avatar-sm me-3">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                          <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="text-xs font-weight-bold mb-0">Programator</p>
+                      <p class="text-xs text-secondary mb-0">Developer</p>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-secondary">Offline</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
+                    </td>
+                    <td class="align-middle">
+                      <a href="#!" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        Edit
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="/static/assets/img/team-4.jpg" class="avatar avatar-sm me-3">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">Laurent Perrier</h6>
+                          <p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="text-xs font-weight-bold mb-0">Executive</p>
+                      <p class="text-xs text-secondary mb-0">Projects</p>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-success">Online</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
+                    </td>
+                    <td class="align-middle">
+                      <a href="#!" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        Edit
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="/static/assets/img/team-3.jpg" class="avatar avatar-sm me-3">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">Michael Levi</h6>
+                          <p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="text-xs font-weight-bold mb-0">Programator</p>
+                      <p class="text-xs text-secondary mb-0">Developer</p>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-success">Online</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
+                    </td>
+                    <td class="align-middle">
+                      <a href="#!" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        Edit
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="/static/assets/img/team-2.jpg" class="avatar avatar-sm me-3">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">Richard Gran</h6>
+                          <p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="text-xs font-weight-bold mb-0">Manager</p>
+                      <p class="text-xs text-secondary mb-0">Executive</p>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-secondary">Offline</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
+                    </td>
+                    <td class="align-middle">
+                      <a href="#!" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        Edit
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="/static/assets/img/team-4.jpg" class="avatar avatar-sm me-3">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">Miriam Eric</h6>
+                          <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="text-xs font-weight-bold mb-0">Programtor</p>
+                      <p class="text-xs text-secondary mb-0">Developer</p>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-secondary">Offline</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
+                    </td>
+                    <td class="align-middle">
+                      <a href="#!" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        Edit
+                      </a>
+                    </td>
+                  </tr>
+                  {% endcomment %}
+  
+                </tbody>
+                {%endfor%}
+  
+                {%else%}
+                <center>
+              <h4 class="display-4">Search &nbsp;'{{searched | capfirst}}'&nbsp; does not match..</h4>
+
+                </center>
+  
+                {% endif %}  
+  
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+   
+   
+  
+    {% include "includes/footer.html" %}
+    
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+
+{% endblock javascripts %}
